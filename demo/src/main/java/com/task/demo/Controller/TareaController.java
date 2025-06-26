@@ -36,8 +36,8 @@ public class TareaController {
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR','COLABORADOR')")
-    public ResponseEntity<TareaResponseDTO> obtenerUsuarioPorId(@PathVariable Long id) {
-        return ResponseEntity.ok(tareaService.obtenerUsuarioPorId(id));
+    public ResponseEntity<TareaResponseDTO> obtenerTareaPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(tareaService.obtenerTareaPorId(id));
     }
 
     

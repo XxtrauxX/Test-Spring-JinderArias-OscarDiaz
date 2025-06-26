@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.task.demo.DTO.*;
 
 @RestController
 @RequestMapping("api/v1/proyecto")
@@ -40,9 +41,9 @@ public class ProyectoController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminarProyectoPorId(@PathVariable Long id) {
         try {
-            proyectoService.eliminarUsuarioPorId(id);
+            proyectoService.eliminarProyectoPorId(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
