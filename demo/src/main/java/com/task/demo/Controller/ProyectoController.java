@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.task.demo.DTO.*;
-
+import java.util.List;
+import com.task.demo.Service.*;
 @RestController
 @RequestMapping("api/v1/proyecto")
 @CrossOrigin
@@ -23,7 +24,7 @@ public class ProyectoController {
     @PostMapping
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public ResponseEntity<ProyectoResponseDTO> registrarProyecto(@RequestBody ProyectoRequestDTO proyectoRequest) {
-        ProyectoResponseDTO nuevoProyecto = proyectoService.registrarProyecto(proyectoRequest);
+        ProyectoResponseDTO nuevoProyecto = proyectoService.registrarProyecto(proyectoResponseDTO);
         return new ResponseEntity<>(nuevoProyecto, HttpStatus.CREATED);
     }
 
@@ -36,7 +37,7 @@ public class ProyectoController {
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR','COLABORADOR')")
     public ResponseEntity<UsuarioResponseDTO> obtenerProyectoPorId(@PathVariable Long id) {
-        return ResponseEntity.ok(proyetoService.obtenerProyectoPorId(id));
+        return ResponseEntity.ok(proyectoService.obtenerProyectoPorId(id));
     }
 
     @DeleteMapping("/{id}")
