@@ -23,6 +23,10 @@ public class Usuario {
 
     @Column(name = "username", nullable = false)
     private String username;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
     
     @ManyToOne
     @JoinColumn(name = "id_Rol", nullable = false)
