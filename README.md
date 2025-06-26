@@ -1,21 +1,43 @@
-# Título del Proyecto
+# MiTask
 
-_Acá va un párrafo que describa lo que es el proyecto_
+_ API REST utilizando Spring Boot que permite gestionar tareas y proyectos de un equipo de trabajo. La aplicación  incluye funcionalidades para crear, consultar, actualizar y eliminar tareas y proyectos, soportar roles de usuario con diferentes niveles de acceso, y manejar relaciones entre proyectos y tareas
 
 ## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
+### CONTEXTO 📋
 
 
-### Pre-requisitos 📋
-
-_Que cosas necesitas para instalar el software y como instalarlas_
-
-```
-Da un ejemplo
-```
+Especificaciones
+Requisitos Funcionales:
+Gestión de Usuarios y Roles:
+Las personas pueden acceder mediante un correo y contraseña en JWT.
+Los usuarios pueden tener roles de "Administrador" o "Colaborador".
+Los administradores pueden gestionar proyectos y tareas, mientras que los colaboradores solo pueden gestionar sus propias tareas asignadas.
+Gestión de Proyectos:
+Crear, editar, consultar y eliminar proyectos.
+A cada proyecto se le asignan los siguientes atributos:
+ID del proyecto.
+Nombre del proyecto.
+Descripción.
+Fecha de inicio y fin.
+Estado (Activo, Finalizado, Cancelado).
+Lista de usuarios asignados al proyecto (relación muchos a muchos).
+Gestión de Tareas:
+Crear, editar, consultar y eliminar tareas relacionadas a proyectos específicos.
+Cada tarea debe tener los siguientes atributos:
+ID de la tarea.
+Nombre de la tarea.
+Descripción.
+Prioridad (Baja, Media, Alta).
+Estado (Pendiente, En Progreso, Completada, Cancelada).
+Fecha de vencimiento.
+Usuario asignado.
+Consultas Avanzadas:
+Consultar todas las tareas de un usuario o proyecto específico.
+Filtrar y ordenar las tareas según atributos como estado, prioridad o fecha de vencimiento.
+Seguridad:
+Implementar autenticación y autorización utilizando Spring Security con JWT.
+Restringir el acceso a los endpoints según el rol del usuario.
 
 ### Instalación 🔧
 
@@ -101,6 +123,3 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 * etc.
 
 
-
----
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
