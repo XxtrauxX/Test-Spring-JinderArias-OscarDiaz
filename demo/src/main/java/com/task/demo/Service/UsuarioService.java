@@ -9,5 +9,4 @@ public interface UsuarioService {
     UsuarioResponseDTO registrarUsuario(UsuarioRequestDTO usuarioRequest);
     UsuarioResponseDTO obtenerUsuarioPorId(Long id);
     List<UsuarioResponseDTO> obtenerTodos();
-    void cambiarEstado(Long id, boolean estado);
 }
