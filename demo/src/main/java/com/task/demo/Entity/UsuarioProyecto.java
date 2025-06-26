@@ -1,6 +1,5 @@
 package com.task.demo.Entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,25 +11,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name= "usurio")
+@Table(name = "usuarioProyecto")
 @Data
 @NoArgsConstructor
-public class Usuario {
-
+public class UsuarioProyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "username", nullable = false)
-    private String username;
-    
     @ManyToOne
-    @JoinColumn(name = "id_Rol", nullable = false)
-    private Rol Rol;
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+    private Usuario idUsuario;
+
+    @ManyToOne
+    @JoinColumn(name = "id_proyecto", referencedColumnName = "id")
+    private Proyecto idProyecto;
 
 
-
-    
 
 
 }
