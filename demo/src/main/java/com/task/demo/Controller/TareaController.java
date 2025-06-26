@@ -13,39 +13,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 @RestController
-@RequestMapping("api/v1/proyecto")
+@RequestMapping("api/v1/tarea")
 @CrossOrigin
-public class ProyectoController {
-    @Autowired ProyectoService proyectoService;
+public class TareaController {
+    @Autowired TareaService tareaService;
 
     @PostMapping
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<ProyectoResponseDTO> registrarProyecto(@RequestBody ProyectoRequestDTO proyectoRequest) {
-        ProyectoResponseDTO nuevoProyecto = proyectoService.registrarProyecto(proyectoRequest);
-        return new ResponseEntity<>(nuevoProyecto, HttpStatus.CREATED);
+    public ResponseEntity<TareaResponseDTO> registrarTarea(@RequestBody TareaRequestDTO tareaRequest) {
+        UsuarioResponseDTO nuevaTarea = tareaService.registrarTarea(tareaRequest);
+        return new ResponseEntity<>(nuevaTarea, HttpStatus.CREATED);
     }
 
     @GetMapping
     @PreAuthorize("hasAuthority('ADMINISTRADOR','COLABORADOR')")
-    public ResponseEntity<List<ProyectoResponseDTO>> obtenerTodos() {
-        return ResponseEntity.ok(proyectoService.obtenerTodos());
+    public ResponseEntity<List<TareaResponseDTO>> obtenerTodos() {
+        return ResponseEntity.ok(tareaService.obtenerTodos());
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR','COLABORADOR')")
-    public ResponseEntity<UsuarioResponseDTO> obtenerProyectoPorId(@PathVariable Long id) {
-        return ResponseEntity.ok(proyetoService.obtenerProyectoPorId(id));
+    public ResponseEntity<TareaResponseDTO> obtenerUsuarioPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(tareaService.obtenerUsuarioPorId(id));
     }
 
+    
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMINISTRADOR')")
-    public ResponseEntity<Void> eliminarUsuario(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminarTarea(@PathVariable Long id) {
         try {
-            proyectoService.eliminarUsuarioPorId(id);
+            tareaService.eliminarTareaPorId(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-    }
+    }    
 }
